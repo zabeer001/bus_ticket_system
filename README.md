@@ -49,7 +49,24 @@ code:
 API Documentation Route=> you will find all the api documentation here/// 
   api/documentation 
 
+though I am giving some photos:
+<img width="791" alt="image" src="https://github.com/user-attachments/assets/64ae739b-ccf3-4e5c-86fd-5dbf0e2f0071" />
 
+
+this is the relationship you will get after seeding// the Database is constructed carefully as the Developer can use ORM , Query builder both, raw sql /// whenever he needs
+
+
+
+<img width="947" alt="image" src="https://github.com/user-attachments/assets/2cc5004e-5e98-49b5-9f44-ec8d3d3445e8" />
+
+
+some demo bus will be created::// 
+<img width="894" alt="image" src="https://github.com/user-attachments/assets/9615d524-a0e5-445c-9936-67eb6fbb9ad3" />
+
+user can filter with date and route// those // 
+make sure you created bus_schedule first// 
+user or admin can only create tickets and only admin can delete tickets// 
+after booking the ticket remaining_tickets of bus_schedule will be decareased// a little stock system is made// 
 
       
 
