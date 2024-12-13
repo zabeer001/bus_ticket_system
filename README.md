@@ -49,6 +49,11 @@ code:
 API Documentation Route=> you will find all the api documentation here/// 
   api/documentation 
 
+  <img width="959" alt="image" src="https://github.com/user-attachments/assets/8b721cb5-1549-4c9f-ad9f-cf720a36c027" />
+  <img width="959" alt="image" src="https://github.com/user-attachments/assets/040b9753-95f6-4d8e-901b-bfde39c5c20e" />
+
+
+
 though I am giving some photos:
 <img width="791" alt="image" src="https://github.com/user-attachments/assets/64ae739b-ccf3-4e5c-86fd-5dbf0e2f0071" />
 
