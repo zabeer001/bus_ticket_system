@@ -862,6 +862,424 @@
                 ]
             }
         },
+        "/api/tickets/{id}": {
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Retrieve a ticket by ID",
+                "operationId": "a178187a5779f35b618a4317f59eb688",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the ticket to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved the ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ticket retrieved successfully"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "schedule_id": {
+                                                    "type": "integer"
+                                                },
+                                                "payment_status": {
+                                                    "type": "string"
+                                                },
+                                                "user_id": {
+                                                    "type": "integer"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Ticket not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ticket not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An error occurred while retrieving the ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Something went wrong"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Delete a ticket by ID",
+                "operationId": "d4a957e1a27c043d1306013c88058ab6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the ticket to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted the ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ticket deleted successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Ticket not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ticket not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An error occurred while deleting the ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Something went wrong"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tickets": {
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Get bus tickets with optional filters",
+                "operationId": "81f640176ec15a85c36cb55e6f8ee5bb",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Filter tickets by date",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Filter tickets by route ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved bus tickets",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "bus_id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "bus_name": {
+                                                        "type": "string"
+                                                    },
+                                                    "start_from": {
+                                                        "type": "string"
+                                                    },
+                                                    "time": {
+                                                        "type": "string"
+                                                    },
+                                                    "date": {
+                                                        "type": "string",
+                                                        "format": "date"
+                                                    },
+                                                    "route_name": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An error occurred while fetching ticket information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "An error occurred while fetching ticket information."
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Create a new bus ticket",
+                "operationId": "613bc943410e15b593d7baf6c00f2cdd",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "schedule_id",
+                                    "payment_status"
+                                ],
+                                "properties": {
+                                    "schedule_id": {
+                                        "description": "The ID of the bus schedule",
+                                        "type": "integer"
+                                    },
+                                    "payment_status": {
+                                        "description": "The status of the payment (e.g., paid, pending)",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created a ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ticket created successfully"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "schedule_id": {
+                                                    "type": "integer"
+                                                },
+                                                "payment_status": {
+                                                    "type": "string"
+                                                },
+                                                "user_id": {
+                                                    "type": "integer"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "All tickets are booked",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "All tickets are booked"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "An error occurred while creating the ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Something went wrong"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
@@ -916,6 +1334,10 @@
         {
             "name": "BusSchedule",
             "description": "BusSchedule"
+        },
+        {
+            "name": "Tickets",
+            "description": "Tickets"
         },
         {
             "name": "Users",
